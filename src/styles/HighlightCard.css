@@ -1,0 +1,53 @@
+.highlight-card {
+  background-color: #1E213A;
+  padding: 1.5rem;
+  text-align: center;
+  color: #E7E7EB;
+}
+
+.progress-bar {
+  width: 70%;
+  margin: 1rem auto 0 auto;
+  height: 8px;
+  background: #E7E7EB;
+  border-radius: 80px;
+}
+
+.progress-bar > div {
+  background: #FFEC65;
+  height: 8px;
+  border-radius: 80px;
+}
+.highlight-card__title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.5rem 0 1rem 0;
+}
+.highlight-card__value {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0;
+}
+.highlight-card__value .unit {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+.highlight-card__extra {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wind-direction {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,111 @@
+.search-panel {
+    background-color: #1E213A;
+    padding: 1rem 2rem;
+    width: 30%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #E7E7EB;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-panel__header {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+.search-panel__close {
+    background: none;
+    border: none;
+    color: #E7E7EB;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.search-panel__form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.search-panel__input-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid #E7E7EB;
+    padding: 0 0.75rem;
+}
+
+.search-panel__input-container .material-icons {
+    color: #616475;
+}
+
+.search-panel__form input {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #E7E7EB;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 0.5rem;
+}
+
+.search-panel__form input:focus {
+    outline: none;
+}
+
+.search-panel__form button {
+    background-color: #3C47E9;
+    color: #E7E7EB;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.search-panel__results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-panel__results li button {
+    width: 100%;
+    background: none;
+    border: 1px solid transparent;
+    color: #E7E7EB;
+    text-align: left;
+    padding: 1.25rem 0.75rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-panel__results li button:hover {
+    border-color: #616475;
+}
+
+.search-panel__results li button .material-icons {
+    color: #616475;
+    display: none;
+}
+
+.search-panel__results li button:hover .material-icons {
+    display: inline-block;
+}
+
+.error-message {
+    color: #EF5350;
+    text-align: center;
+}
+
+/* For mobile */
+@media (max-width: 1024px) {
+    .search-panel {
+        width: 100%;
+    }
+}

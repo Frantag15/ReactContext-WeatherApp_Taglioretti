@@ -1,0 +1,50 @@
+/* Unit Toggle Header */
+.main-content__header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.unit-toggle__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
+  background-color: #585676;
+  color: #E7E7EB;
+  transition: all 0.2s ease-in-out;
+}
+
+.unit-toggle__btn:hover {
+    transform: scale(1.1);
+}
+
+.unit-toggle__btn.active {
+  background-color: #E7E7EB;
+  color: #110E3C;
+}
+
+/* Forecast Grid */
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Highlights Section */
+.highlights__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+}

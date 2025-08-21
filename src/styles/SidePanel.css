@@ -1,0 +1,97 @@
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.side-panel__controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.side-panel__search-btn {
+    background-color: #6E707A;
+    color: #E7E7EB;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.side-panel__location-btn {
+    background-color: #6E707A;
+    color: #E7E7EB;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.side-panel__weather-icon-container {
+    margin: 2rem 0;
+    /* Placeholder for background image */
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #6E707A;
+}
+
+.side-panel__temperature {
+    font-size: 9rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    color: #E7E7EB;
+}
+
+.side-panel__unit {
+    font-size: 3rem;
+    color: #A09FB1;
+    font-weight: 400;
+}
+
+.side-panel__weather-desc {
+    font-size: 2.25rem;
+    color: #A09FB1;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+.side-panel__footer, .side-panel__location {
+    color: #88869D;
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.side-panel__footer {
+    margin-bottom: 1rem;
+}
+
+.side-panel__footer span {
+    margin: 0 0.25rem;
+}
+
+.side-panel__location {
+    display: flex;
+    align-items: center;
+}
+
+.side-panel__location .material-icons {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}

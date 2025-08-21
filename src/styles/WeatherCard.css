@@ -1,0 +1,28 @@
+.weather-card {
+  background-color: #1E213A;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #E7E7EB;
+}
+.weather-card__day {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+.weather-card__icon {
+  margin-bottom: 1.5rem;
+  /* Placeholder for image */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+.weather-card__temps {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+.weather-card__temps .min {
+  color: #A09FB1;
+}
