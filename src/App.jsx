@@ -45,15 +45,17 @@ function App() {
     }
   };
 
-  const handleCitySelect = (lat, lon) => {
-    getWeather(lat, lon);
-    setIsSearchOpen(false);
-  };
+  const [selectedCity, setSelectedCity] = useState({ lat: 51.5074, lon: -0.1278 }); // London por defecto
 
-  // Fetch weather for a default location (London) on initial load
+  // Fetch weather whenever selectedCity changes
   useEffect(() => {
-    getWeather(51.5074, -0.1278);
-  }, []);
+    getWeather(selectedCity.lat, selectedCity.lon);
+  }, [selectedCity]);
+  
+  const handleCitySelect = (city) => {
+    setSelectedCity({ lat: city.lat, lon: city.lon });
+  };
+  
 
   if (isSearchOpen) {
     return (

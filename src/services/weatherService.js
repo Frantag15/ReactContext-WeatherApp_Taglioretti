@@ -11,11 +11,10 @@ const GEO_URL = 'https://api.openweathermap.org/geo/1.0';
  * @returns {Promise<{current: object, forecast: object}>}
  */
 export const fetchWeatherByCoords = async (lat, lon) => {
-    const currentWeatherUrl = `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-    const forecastUrl = `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=-34.6113&lon=-58.4258&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=-34.6113&lon=-58.4258&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
 
     try {
-        // Fetch both endpoints in parallel for efficiency
         const [currentWeatherResponse, forecastResponse] = await Promise.all([
             axios.get(currentWeatherUrl),
             axios.get(forecastUrl)
@@ -27,9 +26,10 @@ export const fetchWeatherByCoords = async (lat, lon) => {
         };
     } catch (error) {
         console.error("Error fetching weather data by coordinates:", error);
-        throw error; // Re-throw to be handled by the calling component
+        throw error;
     }
 };
+
 
 /**
  * Fetches geographic coordinates for a given city name.
@@ -37,12 +37,23 @@ export const fetchWeatherByCoords = async (lat, lon) => {
  * @returns {Promise<Array>} A list of matching locations.
  */
 export const fetchCoordsByCity = async (city) => {
-    const url = `${GEO_URL}/direct?q=${city}&limit=5&appid=${API_KEY}`;
-    try {
-        const response = await axios.get(url);
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching coordinates by city:", error);
-        throw error;
+    if (!city) {
+      throw new Error("City name cannot be empty");
     }
-};
+  
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=b12367f5915129711bcc1fd0e3df2e54`;
+
+  
+    try {
+      const response = await axios.get(url);
+  
+      if (response.data.length === 0) {
+        throw new Error("No locations found for this city");
+      }
+  
+      return response.data; // devuelve un array de objetos con name, lat, lon, country
+    } catch (error) {
+      console.error("Error fetching coordinates by city:", error.message || error);
+      throw new Error("Failed to fetch locations. Please try again.");
+    }
+  };
