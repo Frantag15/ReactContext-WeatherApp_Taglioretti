@@ -3,14 +3,16 @@
   padding: 1.25rem 1rem;
   text-align: center;
   font-weight: 500;
+  border: #c42626;
   color: #E7E7EB;
+  border-style: outset
 }
 .weather-card__day {
   margin-bottom: 0.75rem;
   font-size: 1rem;
 }
 .weather-card__icon {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   /* Placeholder for image */
   height: 60px;
   display: flex;

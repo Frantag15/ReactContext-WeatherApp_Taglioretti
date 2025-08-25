@@ -15,7 +15,7 @@
 }
 
 .side-panel__search-btn {
-    background-color: #6E707A;
+    background-color: #36947c;
     color: #E7E7EB;
     border: none;
     padding: 0.75rem 1.25rem;
@@ -26,7 +26,7 @@
 }
 
 .side-panel__location-btn {
-    background-color: #6E707A;
+    background-color: #2642be;
     color: #E7E7EB;
     border: none;
     border-radius: 50%;
@@ -49,7 +49,7 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    color: #6E707A;
+    color: #747a6e;
 }
 
 .side-panel__temperature {
@@ -61,13 +61,13 @@
 
 .side-panel__unit {
     font-size: 3rem;
-    color: #A09FB1;
+    color: #E7E7EB;
     font-weight: 400;
 }
 
 .side-panel__weather-desc {
     font-size: 2.25rem;
-    color: #A09FB1;
+    color: #E7E7EB;
     font-weight: 700;
     margin: 2rem 0;
 }
