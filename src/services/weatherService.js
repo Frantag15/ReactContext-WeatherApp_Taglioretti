@@ -11,8 +11,8 @@ const GEO_URL = 'https://api.openweathermap.org/geo/1.0';
  * @returns {Promise<{current: object, forecast: object}>}
  */
 export const fetchWeatherByCoords = async (lat, lon) => {
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=-34.6113&lon=-58.4258&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=-34.6113&lon=-58.4258&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=b12367f5915129711bcc1fd0e3df2e54&units=metric`;
 
     try {
         const [currentWeatherResponse, forecastResponse] = await Promise.all([

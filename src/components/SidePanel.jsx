@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTemperature } from '../context/TemperatureContext';
-import { formatDate, getWeatherIcon } from '../utils/weatherUtils';
+import { formatDate, getWeatherIcon, convertTemp } from '../utils/weatherUtils';
 import './../styles/SidePanel.css';
 
 const SidePanel = ({ currentWeather, onGetLocation, onOpenSearch }) => {
@@ -13,7 +13,7 @@ const SidePanel = ({ currentWeather, onGetLocation, onOpenSearch }) => {
   const { name, dt, main, weather } = currentWeather;
   const weatherCondition = weather[0].main;
   const weatherIconSrc = getWeatherIcon(weatherCondition);
-  const temp = Math.round(main.temp);
+  const temp = Math.round(convertTemp(main.temp, unit));
 
   return (
     <aside className="side-panel">

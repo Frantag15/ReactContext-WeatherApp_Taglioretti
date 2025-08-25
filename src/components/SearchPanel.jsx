@@ -28,8 +28,10 @@ const SearchPanel = ({ onClose, onCitySelect }) => {
     };
 
     const handleSelect = (city) => {
-        onCitySelect(city.lat, city.lon);
+        onCitySelect({ lat: city.lat, lon: city.lon });
+        onClose();
     };
+    
 
     return (
         <div className="search-panel">

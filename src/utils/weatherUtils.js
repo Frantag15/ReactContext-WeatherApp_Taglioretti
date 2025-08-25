@@ -30,3 +30,12 @@ export const getWeatherIcon = (condition) => {
   const iconFileName = iconMap[condition] || 'Clear.svg';
   return `/weather-icons/${iconFileName}`;
 };
+
+export const convertTemp = (tempC, unit) => {
+  if (unit === 'C') {
+    return tempC; // ya está en Celsius
+  } else if (unit === 'F') {
+    return tempC * 9 / 5 + 32; // convierte a Fahrenheit
+  }
+  return tempC;
+};

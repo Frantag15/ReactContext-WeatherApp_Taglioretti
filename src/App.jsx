@@ -12,6 +12,12 @@ function App() {
   const [error, setError] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const [selectedCity, setSelectedCity] = useState({ 
+    lat: 51.5074, 
+    lon: -0.1278,
+    name: "London" 
+  }); // 🔹 London por defecto
+
   const getWeather = async (lat, lon) => {
     try {
       setLoading(true);
@@ -32,6 +38,11 @@ function App() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           getWeather(position.coords.latitude, position.coords.longitude);
+          setSelectedCity({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+            name: "My Location"
+          });
         },
         (err) => {
           setError('Location access denied. Please enable it in your browser settings.');
@@ -45,17 +56,20 @@ function App() {
     }
   };
 
-  const [selectedCity, setSelectedCity] = useState({ lat: 51.5074, lon: -0.1278 }); // London por defecto
-
-  // Fetch weather whenever selectedCity changes
+  // 🔹 Cargar clima cuando cambia la ciudad seleccionada
   useEffect(() => {
     getWeather(selectedCity.lat, selectedCity.lon);
   }, [selectedCity]);
-  
+
+  // 🔹 Cuando seleccionás ciudad desde el buscador
   const handleCitySelect = (city) => {
-    setSelectedCity({ lat: city.lat, lon: city.lon });
+    setSelectedCity({
+      lat: city.lat,
+      lon: city.lon,
+      name: city.name
+    });
+    setIsSearchOpen(false); // 🔹 cerrar buscador después de seleccionar
   };
-  
 
   if (isSearchOpen) {
     return (
