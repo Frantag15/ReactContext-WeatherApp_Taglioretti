@@ -9,9 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Weather App</title>
+
+    <style>
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #image-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        overflow: hidden;
+        
+        background-image: url('./img/fondo.jpg');
+        background-size: cover;
+        background-position: center center; 
+        background-repeat: no-repeat; 
+        filter: brightness(50%);
+      }
+
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+
   </head>
   <body>
+
+    <div id="image-background"></div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -70,18 +70,27 @@ const MainContent = ({ forecast, highlights }) => {
       <div className="highlights">
         <h2 className="highlights__title">Today's Highlights</h2>
         <div className="highlights-grid">
-          <HighlightCard title="Wind status" value={Math.round(wind.speed * 2.237)} unit="mph">
+          <div className="cards">
+          <HighlightCard title="Wind status" value={Math.round(wind.speed * 2.237)} unit="mph" >
             <div className="wind-direction" style={{transform: `rotate(${wind.deg}deg)`}}>
                 <span className="material-icons">navigation</span>
             </div>
           </HighlightCard>
-          <HighlightCard title="Humidity" value={main.humidity} unit="%">
+          </div>
+          <div className="cards">
+          <HighlightCard title="Humidity" value={main.humidity} unit="%" className="cards">
             <div className="progress-bar">
               <div style={{ width: `${main.humidity}%` }}></div>
             </div>
           </HighlightCard>
-          <HighlightCard title="Visibility" value={(visibility / 1609).toFixed(1)} unit="miles" />
-          <HighlightCard title="Air Pressure" value={main.pressure} unit="mb" />
+          </div>
+
+          <div className="cards">
+          <HighlightCard title="Visibility" value={(visibility / 1609).toFixed(1)} unit="miles" className="cards"/>
+          </div>
+          <div className="cards">
+          <HighlightCard title="Air Pressure" value={main.pressure} unit="mb" className="cards"/>
+          </div>
         </div>
       </div>
     </main>
