@@ -5,6 +5,11 @@ import SidePanel from './components/SidePanel';
 import MainContent from './components/MainContent';
 import SearchPanel from './components/SearchPanel';
 import { fetchWeatherByCoords } from './services/weatherService';
+import { useTheme } from './context/ThemeContext';
+
+// imágenes
+import fondo from "./img/fondoOscuro.jpg"; 
+import fondoblanco from "./img/fondoBlanco.jpg"; 
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -16,7 +21,10 @@ function App() {
     lat: 51.5074, 
     lon: -0.1278,
     name: "London" 
-  }); // 🔹 London por defecto
+  });
+
+  const { isLightMode, setIsLightMode } = useTheme();
+  const toggleTheme = () => setIsLightMode(!isLightMode);
 
   const getWeather = async (lat, lon) => {
     try {
@@ -31,6 +39,7 @@ function App() {
       setLoading(false);
     }
   };
+  
 
   const handleGetLocation = () => {
     setLoading(true);
@@ -56,19 +65,17 @@ function App() {
     }
   };
 
-  // 🔹 Cargar clima cuando cambia la ciudad seleccionada
   useEffect(() => {
     getWeather(selectedCity.lat, selectedCity.lon);
   }, [selectedCity]);
 
-  // 🔹 Cuando seleccionás ciudad desde el buscador
   const handleCitySelect = (city) => {
     setSelectedCity({
       lat: city.lat,
       lon: city.lon,
       name: city.name
     });
-    setIsSearchOpen(false); // 🔹 cerrar buscador después de seleccionar
+    setIsSearchOpen(false);
   };
 
   if (isSearchOpen) {
@@ -81,23 +88,56 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      {loading && <div className="loading-overlay">Loading...</div>}
-      {error && <div className="error-overlay">{error}</div>}
+    <div className="flex h-screen">
+      {/* SidePanel fijo */}
+      <div className="w-72 z-20 relative">
+        <SidePanel
+          currentWeather={weatherData?.current}
+          onGetLocation={handleGetLocation}
+          onOpenSearch={() => setIsSearchOpen(true)}
+        />
+      </div>
 
-      {!loading && !error && weatherData && (
-        <>
-          <SidePanel
-            currentWeather={weatherData.current}
-            onGetLocation={handleGetLocation}
-            onOpenSearch={() => setIsSearchOpen(true)}
-          />
-          <MainContent
-            forecast={weatherData.forecast}
-            highlights={weatherData.current}
-          />
-        </>
-      )}
+      {/* MainContent con fondo dinámico */}
+      <div
+      className="flex-1 relative overflow-auto"
+      style={{
+        backgroundImage: isLightMode ? `url(${fondoblanco})` : `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${fondo})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        transition: "background-image 0.5s ease-in-out",
+        filter: isLightMode ? "brightness(100%)" : "brightness(85%)",
+  }}
+>
+        {/* Overlay degradado */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: isLightMode
+              ? "rgba(255,255,255,0.6)"
+              : "rgba(0,0,0,0.6)",
+            backdropFilter: "blur(3px)"
+          }}
+        />
+
+        {/* Contenido */}
+        <div className="relative z-10 p-6">
+          {loading && <div className="loading-overlay">Loading...</div>}
+          {error && <div className="error-overlay">{error}</div>}
+
+          {!loading && !error && weatherData && (
+            <MainContent
+              forecast={weatherData.forecast}
+              highlights={weatherData.current}
+            />
+          )}
+
+          {/* Botón de tema */}
+          <button className="theme-toggle-btn" onClick={toggleTheme}>
+            {isLightMode ? "🌙 Oscuro" : "☀️ Claro"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
